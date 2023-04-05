@@ -1,0 +1,35 @@
+{
+	"name": "mcm-test-skill-be",
+	"version": "1.0.0",
+	"description": "Test skill MCM BE",
+	"main": "./src/server.js",
+	"scripts": {
+		"dev": "cross-env process.env.NODE_ENV='development' nodemon",
+		"build": "cross-env process.env.NODE_ENV='built' node",
+		"m:migrate": "sequelize db:migrate",
+		"s:latest": "sequelize db:seed:all",
+		"db:sync": "sequelize db:drop && sequelize db:create --charset utf8 && npm run m:migrate && npm run s:latest"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rvldodo/mcm-test-skill-be.git"
+	},
+	"author": "Rivaldo Ardika Lawalata",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/rvldodo/mcm-test-skill-be/issues"
+	},
+	"homepage": "https://github.com/rvldodo/mcm-test-skill-be#readme",
+	"dependencies": {
+		"body-parser": "^1.20.2",
+		"dotenv": "^16.0.3",
+		"mysql2": "^3.2.0",
+		"sequelize": "^6.30.0",
+		"swagger-ui-express": "^4.6.2",
+		"validator": "^13.9.0"
+	},
+	"devDependencies": {
+		"cross-env": "^7.0.3",
+		"nodemon": "^2.0.22"
+	}
+}

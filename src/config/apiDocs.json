@@ -1,0 +1,322 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "MCM Skill Test API",
+		"description": "API for skill test",
+		"version": "1.0.0"
+	},
+	"servers": [
+		{
+			"url": "http://localhost:6969",
+			"description": "local 2"
+		},
+		{
+			"url": "http://localhost:3000",
+			"description": "local 1"
+		}
+	],
+	"tags": [
+		{
+			"name": "Student",
+			"description": "Student routes"
+		},
+		{
+			"name": "Subject",
+			"description": "Subjects routes"
+		}
+	],
+	"paths": {
+		"/api/students": {
+			"get": {
+				"tags": ["Student"],
+				"summary": "Get all students",
+				"responses": {
+					"200": {
+						"description": "Success get all students"
+					},
+					"400": {
+						"description": "Bad request"
+					}
+				}
+			},
+			"post": {
+				"tags": ["Student"],
+				"summary": "Create student",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"firstName": {
+										"type": "string"
+									},
+									"middleName": {
+										"type": "string"
+									},
+									"lastName": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									},
+									"age": {
+										"type": "integer"
+									},
+									"subjects": {
+										"type": "array",
+										"items": {
+											"type": "integer"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Success get all students"
+					},
+					"400": {
+						"description": "Bad request"
+					}
+				}
+			}
+		},
+		"/api/students/{id}": {
+			"get": {
+				"tags": ["Student"],
+				"summary": "Get all students",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						},
+						"description": "Student's id"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success get student"
+					},
+					"400": {
+						"description": "Bad request"
+					},
+					"404": {
+						"description": "Not found"
+					}
+				}
+			},
+			"put": {
+				"tags": ["Student"],
+				"summary": " Student update data",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						},
+						"description": "Student's id"
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"firstName": {
+										"type": "string"
+									},
+									"middleName": {
+										"type": "string"
+									},
+									"lastName": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									},
+									"age": {
+										"type": "integer"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Student updated"
+					},
+					"404": {
+						"description": "User not found"
+					}
+				}
+			},
+			"delete": {
+				"tags": ["Student"],
+				"summary": "Delete student",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						},
+						"description": "Student's id"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Student deleted"
+					},
+					"400": {
+						"description": "Bad request"
+					},
+					"404": {
+						"description": "Not found"
+					}
+				}
+			}
+		},
+		"/api/subjects": {
+			"get": {
+				"tags": ["Subject"],
+				"summary": "Get all subjects",
+				"responses": {
+					"200": {
+						"description": "Success get all subjects"
+					},
+					"400": {
+						"description": "Bad request"
+					}
+				}
+			},
+			"post": {
+				"tags": ["Subject"],
+				"summary": "Create subject",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"subject": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Success created study plan"
+					},
+					"400": {
+						"description": "Bad request"
+					}
+				}
+			}
+		},
+		"/api/subjects/{id}": {
+			"get": {
+				"tags": ["Subject"],
+				"summary": "Get subject by id",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						},
+						"description": "Subject's id"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success get subject"
+					},
+					"400": {
+						"description": "Bad request"
+					},
+					"404": {
+						"description": "Not found"
+					}
+				}
+			},
+			"put": {
+				"tags": ["Subject"],
+				"summary": " Subject update data",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						},
+						"description": "Subject's id"
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"subject": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Subject updated"
+					},
+					"404": {
+						"description": "Subject not found"
+					}
+				}
+			},
+			"delete": {
+				"tags": ["Subject"],
+				"summary": "Delete subject",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						},
+						"description": "Subject's id"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Subject deleted"
+					},
+					"400": {
+						"description": "Bad request"
+					},
+					"404": {
+						"description": "Not found"
+					}
+				}
+			}
+		}
+	}
+}
